@@ -8,7 +8,7 @@
 
 import Foundation
 
-func v1_index_of<C : CollectionType>(domain: C, condition: C.Generator.Element -> Bool) -> C.Index? {
+func v1_index_of<C : CollectionType where C.Generator.Element : Equatable>(domain: C, condition: C.Generator.Element -> Bool) -> C.Index? {
     return find(lazy(domain).map(condition), true)
 }
 
