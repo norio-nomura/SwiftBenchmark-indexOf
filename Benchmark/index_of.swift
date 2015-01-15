@@ -21,6 +21,15 @@ func v2_index_of<C : CollectionType>(domain: C, condition: C.Generator.Element -
     return nil
 }
 
+func v2_1_index_of<C : CollectionType where C.Generator.Element : Equatable>(domain: C, condition: C.Generator.Element -> Bool) -> C.Index? {
+    for idx in indices(domain) {
+        if condition(domain[idx]) {
+            return idx
+        }
+    }
+    return nil
+}
+
 // from: http://airspeedvelocity.net/2015/01/02/more-fun-with-implicitly-wrapped-non-optionals/
 func v3_index_of<C : CollectionType>(domain: C, condition: C.Generator.Element -> Bool) -> C.Index? {
     for (idx, element) in Zip2(indices(domain), domain) {

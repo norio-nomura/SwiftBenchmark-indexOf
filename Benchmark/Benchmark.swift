@@ -50,6 +50,14 @@ class Benchmark: XCTestCase {
             println("results: \(results)")
         }
     }
+    func testPerformance_v2_1() {
+        self.measureBlock() {
+            var results = self.values.map { value -> Int? in
+                v2_1_index_of(self.elements, {$0 == value})
+            }
+            println("results: \(results)")
+        }
+    }
     func testPerformance_v3() {
         self.measureBlock() {
             var results = self.values.map { value -> Int? in
